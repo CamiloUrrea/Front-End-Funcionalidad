@@ -36,19 +36,6 @@ Este proyecto forma parte de un sistema de reservas de canchas deportivas. La fu
   - Validaciones en campos como dimensiones (positivos, realistas)
   - Al hacer clic en “Cancelar” se regresa a la interfaz principal
 
-## 🗂️ Estructura del Proyecto
-FuncionalidadAgregarCancha/
-├── AgregarCancha/
-│ ├── agregar_cancha.html
-│ ├── script_agregar_cancha.js
-│ └── styles_agregar_cancha.css
-├── Images_IUorganizacion/ # Imágenes utilizadas en el FrontEnd
-├── css_IUorganizacion/
-│ └── styles_organizacion.css
-├── js_IUorganizacion/
-│ └── script_organizacion.js
-├── organizacion_deportiva.html
-└── README.md
 
 ## ✏️ Tecnologías Usadas
 
