@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Organización Deportiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-5e10-61f7-bbec-73ef4c0c060e/raw?se=2025-05-10T03%3A55%3A50Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-10T02%3A43%3A32Z&ske=2025-05-11T02%3A43%3A32Z&sks=b&skv=2024-08-04&sig=cmXwHeTo9vwJ1AaN0XYtx26FWzIudWA9NajTrMVsW7o%3D" alt="Logo de la aplicación" />
+        </div>
+        <nav class="top-nav">
+            <button onclick="navigateTo('verCanchas')">Ver canchas</button>
+            <button onclick="navigateToAgregarCancha()">Agregar Cancha</button>
+            <button onclick="navigateTo('verEncargados')">Ver encargados</button>
+            <button onclick="navigateTo('agregarEncargado')">Agregar encargado</button>
+        </nav>
+        <div class="user-settings">
+            <div class="username">ImerAdmin2872</div>
+            <div class="settings-icon" onclick="toggleSettingsMenu()"></div>
+            <div class="settings-menu hidden" id="settingsMenu">
+                <button>Ajustes</button>
+                <button>Cambiar información</button>
+                <button>Cerrar sesión</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="notification-bar">
+            <p>Avisos o recomendaciones para la organización.</p>
+        </section>
+        <section class="content">
+            <div class="info-box">
+                <h3>Información de Cancha</h3>
+                <p><strong>Nombre:</strong> Cancha Central</p>
+                <p><strong>Tipo:</strong> Fútbol 5</p>
+                <p><strong>Organización:</strong> Club Deportivo Ejemplo</p>
+                <p><strong>Superficie:</strong> Sintética</p>
+                <p><strong>Costo por hora:</strong> $25.000</p>
+            </div>
+            <div class="map-box">
+                <img src="https://css-tianguis.com/wp-content/uploads/2020/03/google-maps-links-1024x546.png" alt="Mapa simulado" class="map-image"/>
+            </div>
+        </section>
+    
+    <section class="stats-section">
+        <div class="stat-card">
+            <h4>Total Canchas</h4>
+            <p>8</p>
+        </div>
+        <div class="stat-card">
+            <h4>Reservas Hoy</h4>
+            <p>14</p>
+        </div>
+        <div class="stat-card">
+            <h4>Canchas Disponibles</h4>
+            <p>5</p>
+        </div>
+        <div class="stat-card">
+            <h4>Ingresos Estimados</h4>
+            <p>$200.000</p>
+        </div>
+    </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

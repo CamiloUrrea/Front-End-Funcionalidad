@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Cancha</title>
+    <link rel="stylesheet" href="styles_agregar_cancha.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Agregar Cancha</h2>
+            <form id="canchaForm">
+                <fieldset>
+                    <legend>Información Básica</legend>
+                    <label>Nombre de la cancha:<input type="text" name="nombre" required></label>
+                    <label>Tipo de cancha:
+                        <select name="tipo" required>
+                            <option value="">Seleccione</option>
+                            <option>Fútbol 5</option><option>Fútbol 7</option><option>Fútbol 11</option>
+                            <option>Baloncesto</option><option>Voleibol</option><option>Tenis</option>
+                            <option>Microfútbol</option><option>Béisbol</option><option>Rugby</option>
+                            <option>Multifuncional</option>
+                        </select>
+                    </label>
+                    <label>Organización:<input type="text" name="organizacion" value="Organización Ejemplo" readonly></label>
+                    <label>Superficie:
+                        <select name="superficie" required>
+                            <option value="">Seleccione</option>
+                            <option>Sintética</option><option>Cemento</option><option>Pasto</option>
+                            <option>Grama natural</option>
+                        </select>
+                    </label>
+                    <label>Dimensiones (m):</label>
+                    <div class="dimension-group">
+                        <input type="number" name="largo" min="10" max="150" placeholder="Largo" required>
+                        <input type="number" name="ancho" min="5" max="100" placeholder="Ancho" required>
+                    </div>
+                    <label>Costo por hora: <input type="number" name="costo" min="0" step="1000" required></label>
+                </fieldset>
+                <fieldset>
+                    <legend>Información Opcional</legend>
+                    <label>Iluminación:
+                        <select name="iluminacion"><option>Sí</option><option>No</option></select>
+                    </label>
+                    <label>Cubierta:
+                        <select name="cubierta"><option>Sí</option><option>No</option></select>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Ubicación</legend>
+                    <label>Departamento:
+                        <select id="departamento" name="departamento" required></select>
+                    </label>
+                    <label>Municipio:
+                        <select id="municipio" name="municipio" required></select>
+                    </label>
+                    <label>Latitud: <input type="text" id="latitud" name="latitud" required></label>
+                    <label>Longitud: <input type="text" id="longitud" name="longitud" required></label>
+                    <label>Dirección: <input type="text" name="direccion" required></label>
+                </fieldset>
+                <div class="form-buttons">
+                    <button type="submit">Aceptar</button>
+                    <button type="button" onclick="cancelar()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <div class="map-section">
+            <h3>Mapa</h3>
+            <img src="mapa_simulado.jpg" alt="Mapa simulado" class="map-image"/>
+        </div>
+        <div class="horarios-section">
+            <h3>Horarios Disponibles</h3>
+            <div class="dias-container" id="diasContainer"></div>
+        </div>
+    </div>
+    <script src="script_agregar_cancha.js"></script>
+</body>
+</html>
