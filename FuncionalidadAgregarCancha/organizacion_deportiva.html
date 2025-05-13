@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Organización Deportiva</title>
+    <link rel="stylesheet" href="css_IUorganizacion/styles_organizacion_dep.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Images_IUorganizacion/Logo de TSC Development.png" alt="Logo de la aplicación" />
+        </div>
+        <nav class="top-nav">
+            <button onclick="navigateTo('verCanchas')">Ver canchas</button>
+            <button onclick="navigateToAgregarCancha()">Agregar Cancha</button>
+            <button onclick="navigateTo('verEncargados')">Ver encargados</button>
+            <button onclick="navigateTo('agregarEncargado')">Agregar encargado</button>
+        </nav>
+        <div class="user-settings">
+            <div class="username">ImerAdmin2872</div>
+            <div class="settings-icon" onclick="toggleSettingsMenu()"></div>
+            <div class="settings-menu hidden" id="settingsMenu">
+                <button>Ajustes</button>
+                <button>Cambiar información</button>
+                <button>Cerrar sesión</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="notification-bar">
+            <p>Esta interfaz aún está representada graficamente ya que no hace parte de la funcionalidad escogida.</p>
+        </section>
+        <section class="content">
+            <div class="info-box">
+                <h3>Información de Cancha</h3>
+                <p><strong>Nombre:</strong> Cancha Central</p>
+                <p><strong>Tipo:</strong> Fútbol 5</p>
+                <p><strong>Organización:</strong> Club Deportivo Ejemplo</p>
+                <p><strong>Superficie:</strong> Sintética</p>
+                <p><strong>Costo por hora:</strong> $25.000</p>
+            </div>
+            <div class="map-box">
+                <img src="Images_IUorganizacion/Mapa simulado.png" alt="Mapa simulado" class="map-image"/>
+            </div>
+        </section>
+    
+    <section class="stats-section">
+        <div class="stat-card">
+            <h4>Total Canchas</h4>
+            <p>8</p>
+        </div>
+        <div class="stat-card">
+            <h4>Reservas Hoy</h4>
+            <p>14</p>
+        </div>
+        <div class="stat-card">
+            <h4>Canchas Disponibles</h4>
+            <p>5</p>
+        </div>
+        <div class="stat-card">
+            <h4>Ingresos Estimados</h4>
+            <p>$200.000</p>
+        </div>
+    </section>
+    </main>
+    
+    <script src="js_IUorganizacion/script_organizacion_dep.js"></script>
+</body>
+</html>
