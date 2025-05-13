@@ -62,4 +62,4 @@ FuncionalidadAgregarCancha/
 
 - [SGV13](https://github.com/SGV13)
 - [CamiloUrrea](https://github.com/CamiloUrrea)
-- [TomasCGH] (https://github.com/TomasCGH)
+- [TomasCGH](https://github.com/TomasCGH)
