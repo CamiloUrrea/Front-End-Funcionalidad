@@ -1,3 +1,4 @@
+/* ---------- Global ---------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #eef2f3;
@@ -13,16 +14,14 @@ body {
     padding: 20px;
 }
 
-.form-section, .map-section, .horarios-section {
+/* ---------- Secciones principales ---------- */
+.form-section,
+.map-section,
+.horarios-section {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.map-section {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-section {
@@ -30,11 +29,17 @@ body {
     grid-row: 1 / 3;
 }
 
+.map-section {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
 .horarios-section {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
 
+/* ---------- Formularios ---------- */
 form fieldset {
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -48,7 +53,9 @@ form label {
     font-weight: 500;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 8px;
     margin-top: 3px;
@@ -94,14 +101,15 @@ button[type="button"] {
     color: white;
 }
 
-.map-image {
+/* ---------- Mapa ---------- */
+.leaflet-map {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 500px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
-/* Sección de horarios mejorada */
+/* ---------- Horarios ---------- */
 .dias-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -112,7 +120,7 @@ button[type="button"] {
     background: linear-gradient(145deg, #f9f9f9, #e0e0e0);
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .dia label {
@@ -130,13 +138,6 @@ button[type="button"] {
     margin-bottom: 10px;
 }
 
-.leaflet-map {
-    width: 100%;
-    height: 500px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
 .cerrado-linea {
     display: inline-flex;
     align-items: center;
@@ -150,11 +151,8 @@ button[type="button"] {
     color: #2c3e50;
 }
 
-
 .dia-nombre {
     font-weight: bold;
     font-size: 1rem;
     margin-bottom: 5px;
 }
-
-
