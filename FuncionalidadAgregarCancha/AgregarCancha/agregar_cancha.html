@@ -25,7 +25,7 @@
                             <option>Multifuncional</option>
                         </select>
                     </label>
-                    <label>Organización:<input type="text" name="organizacion" value="Organización Ejemplo" readonly class="input-full"></label>
+                    <label>Organización:<input type="text" name="organizacion" value="Club Deportivo Ejemplo" readonly class="input-full"></label>
                     <label>Superficie:
                         <select name="superficie" class="input-full" required>
                             <option value="">Seleccione</option>
@@ -62,7 +62,13 @@
                     </label>
                     <label>Latitud:<input type="text" id="latitud" name="latitud" class="input-full" required readonly></label>
                     <label>Longitud:<input type="text" id="longitud" name="longitud" class="input-full" required readonly></label>
-                    <label>Dirección:<input type="text" name="direccion" id="direccion" class="input-full" required></label>
+                    <label>Direccion:</label>
+                    <div class="direccion-grupo">
+                        <input type="text" id="viaBase" readonly value="Calle 82AA">
+                        <input type="text" id="numeroResidencia" placeholder="#25-30" required>
+                        <input type="text" id="ubicacion" readonly value="Medellín, Antioquia">
+                        <input type="hidden" id="direccion" name="direccion">
+                    </div>
                     <label>Descripción adicional:
                         <textarea name="descripcion" class="input-full" placeholder="Ej: Entrada por portón lateral."></textarea>
                     </label>

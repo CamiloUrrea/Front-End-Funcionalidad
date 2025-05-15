@@ -156,3 +156,18 @@ button[type="button"] {
     font-size: 1rem;
     margin-bottom: 5px;
 }
+
+/* ---------- Dirección ---------- */
+.direccion-grupo {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.direccion-grupo input {
+    border: 1px solid #aaa;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+}

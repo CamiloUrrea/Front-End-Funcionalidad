@@ -75,17 +75,40 @@ function validarDimensiones() {
     return true;
 }
 
-// Validar formato de dirección colombiana
+// Validar dirección completa (urbana o rural)
 function validarDireccion() {
-    const direccion = document.getElementById("direccion").value;
-    const formato = /^(?:(?:cra|cl|av|tv|diagonal)\s?\d+[a-zA-Z]?(?:\s?(?:sur|norte))?\s?#\d+[a-zA-Z]?-?\d+)(?:\s?(int|apto|torre)\s?\d+)?$/i;
+    const via = document.getElementById("viaBase").value.trim();
+    const numero = document.getElementById("numeroResidencia").value.trim();
+    const ubicacion = document.getElementById("ubicacion").value.trim();
 
-    if (!formato.test(direccion)) {
-        alert("Por favor ingrese una dirección válida en formato colombiano. Ej: Cra 19 #25-75 int 218");
-        return false;
+    const direccion = `${via} ${numero}, ${ubicacion}`;
+
+    // Detectar zona rural si el tipo de vía no comienza con una palabra urbana conocida
+    const esZonaRural = !/^(Calle|Carrera|Avenida|Diagonal|Transversal)/i.test(via);
+
+    const formatoUrbano = /^(Calle|Carrera|Avenida|Diagonal|Transversal)\s\d{1,3}[A-Z]{0,2}\s?#\d{1,4}[A-Z]?-?\d{1,4},\s?[\w\sáéíóúÁÉÍÓÚñÑ]+,\s?[\w\sáéíóúÁÉÍÓÚñÑ]+$/i;
+
+    if (!formatoUrbano.test(direccion)) {
+        if (esZonaRural) {
+            if (numero.length < 2) {
+                alert("Por favor agregue una descripción mínima para la zona rural. Ej: s/n, entrada por puente, referencia local.");
+                return false;
+            }
+            const confirmacion = confirm(`La dirección registrada será:\n\n${direccion}\n\n¿Desea continuar?`);
+            if (!confirmacion) return false;
+        } else {
+            alert("Por favor ingrese una dirección válida. Ej: Calle 82AA #25-30, Medellín, Antioquia");
+            return false;
+        }
+    } else {
+        const confirmacion = confirm(`La dirección parece válida:\n\n${direccion}\n\n¿Desea continuar con esta dirección?`);
+        if (!confirmacion) return false;
     }
+
+    document.getElementById("direccion").value = direccion;
     return true;
 }
+
 
 // Alternar estado de horarios según casilla Cerrado
 function toggleHorario(dia, cerrado) {
@@ -111,28 +134,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }).addTo(map);
 
     let marker;
+
     map.on("click", (e) => {
         const { lat, lng } = e.latlng;
-        document.getElementById("latitud").value = lat.toFixed(6);
-        document.getElementById("longitud").value = lng.toFixed(6);
-
-        if (marker) {
-            marker.setLatLng(e.latlng);
-        } else {
-            marker = L.marker(e.latlng).addTo(map);
-        }
 
         fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
             .then(res => res.json())
             .then(data => {
-                const { country, state, city, town, village } = data.address;
+                const { country, state, city, town, village, road, neighbourhood } = data.address;
+
                 if (country !== "Colombia") {
                     alert("Por favor seleccione una ubicación dentro de Colombia.");
+
+                    // Limpiar campos
+                    document.getElementById("latitud").value = "";
+                    document.getElementById("longitud").value = "";
+                    document.getElementById("departamento").value = "";
+                    document.getElementById("municipio").value = "";
+                    document.getElementById("viaBase").value = "";
+                    document.getElementById("ubicacion").value = "";
+                    document.getElementById("numeroResidencia").placeholder = "#25-30";
+                    document.getElementById("numeroResidencia").dataset.rural = "false";
+
+                    if (marker) {
+                        map.removeLayer(marker);
+                        marker = null;
+                    }
+
                     return;
                 }
+
+                const municipio = city || town || village || "";
+                const viaBase = road || neighbourhood || data.name || "Zona rural";
+                const ubicacion = `${municipio}, ${state || ""}`;
+
+                // Determinar si es zona rural por ausencia de vía urbana común
+                const esZonaRural = !/^(Calle|Carrera|Avenida|Diagonal|Transversal)/i.test(viaBase);
+
+                // Llenar campos individuales
+                document.getElementById("latitud").value = lat.toFixed(6);
+                document.getElementById("longitud").value = lng.toFixed(6);
                 document.getElementById("departamento").value = state;
-                document.getElementById("municipio").value = city || town || village || "";
+                document.getElementById("municipio").value = municipio;
+                document.getElementById("viaBase").value = viaBase;
+                document.getElementById("ubicacion").value = ubicacion;
+
+                document.getElementById("numeroResidencia").placeholder = esZonaRural
+                    ? "Ej: s/n o referencia local"
+                    : "#25-30";
+                document.getElementById("numeroResidencia").dataset.rural = esZonaRural;
+
+                if (marker) {
+                    marker.setLatLng([lat, lng]);
+                } else {
+                    marker = L.marker([lat, lng]).addTo(map);
+                }
             })
             .catch(err => console.error("Error al obtener la ubicación:", err));
+
     });
 });
